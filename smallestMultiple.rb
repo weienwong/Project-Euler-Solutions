@@ -67,22 +67,12 @@ end
 
 def smallestMultiple lastNum=20
 
-  allFactors = (1.. lastNum).to_a
-  dividedFactors = []
-  currentFactors = []
+  primes = primesUpTo lastNum
+  composites = compositesUpTo lastNum
+  primeHash = storePrimes primes
+  totalFactors = maxFactors composites, primeHash
   
-  dividedFactors = allFactors
-  
-  puts "The last number is #{lastNum}"
-
-  (2..lastNum).each do |n|
-    allFactors.each do |f|
-      if f % n == 0
-        puts n
-      end
-    end
-  end
-  
-  dividedFactors
+  multiplyFactors totalFactors
 
 end
+
